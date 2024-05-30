@@ -1,14 +1,13 @@
-// src/features/users/usersSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Define the async thunk for fetching users
-export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
+// Async thunk for fetching users
+export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {  
   const response = await axios.get('https://jsonplaceholder.typicode.com/users');
   return response.data;
 });
 
-// Define the async thunk for updating a user
+// Async thunk for updating a user
 export const updateUser = createAsyncThunk('users/updateUser', async ({ id, updatedUser }) => {
   try {
     const response = await axios.put(`https://jsonplaceholder.typicode.com/users/${id}`, updatedUser);
@@ -45,7 +44,7 @@ const usersSlice = createSlice({
         state.status = 'failed';
         state.error = action.error.message;
       })
-      // Add extra reducers for handling updateUser async action lifecycle
+      // Added reducers for handling updateUser
       .addCase(updateUser.pending, (state) => {
         state.status = 'loading';
       })

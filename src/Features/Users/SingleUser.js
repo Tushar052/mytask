@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { updateUser, deleteUser } from "./usersSlice"; // Assuming you have a deleteUser action
+import { updateUser, deleteUser } from "./usersSlice"; 
 import FavoriteIcon from '@mui/icons-material/FavoriteOutlined';
 import EditIcon from '@mui/icons-material/EditOutlined';
 import DeleteIcon from '@mui/icons-material/DeleteOutline';
@@ -23,7 +23,7 @@ const SingleUser = ({ user }) => {
   );
 
   const handleShowModal = () => {
-    setShowModal(true);
+    setShowModal(true);  // For opening the Modal
   };
 
   const handleClick = () => {
@@ -31,7 +31,7 @@ const SingleUser = ({ user }) => {
   };
 
   const handleCloseModal = () => {
-    setShowModal(false);
+    setShowModal(false); // For closing the Modal
   };
 
   const handleChange = (e) => {
@@ -58,6 +58,7 @@ const SingleUser = ({ user }) => {
   }, [updatedUser.name]);
 
   return (
+    // Render the single User Card 
     <div className="col-md-3 d-flex align-items-stretch">
       <div
         className="card mb-4"
@@ -94,11 +95,13 @@ const SingleUser = ({ user }) => {
           </div>
         </div>
       </div>
+ 
 
+ {/* Modal Code */}
       {showModal && (
         <div
-          className="modal show"
-          style={{ display: "block", backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+        className="modal show"
+        style={{ display: "block", backgroundColor: "rgba(0, 0, 0, 0.5)" }}
         >
           <div
             className="modal-dialog"
@@ -111,7 +114,7 @@ const SingleUser = ({ user }) => {
                   type="button"
                   className="close"
                   onClick={handleCloseModal}
-                >
+                  >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -126,7 +129,7 @@ const SingleUser = ({ user }) => {
                     value={updatedUser.name}
                     onChange={handleChange}
                     required
-                  />
+                    />
                 </div>
                 <div className="form-group">
                   <label htmlFor="email">Email</label>
@@ -138,7 +141,7 @@ const SingleUser = ({ user }) => {
                     value={updatedUser.email}
                     onChange={handleChange}
                     required
-                  />
+                    />
                 </div>
                 <div className="form-group">
                   <label htmlFor="phone">Phone</label>
@@ -150,7 +153,7 @@ const SingleUser = ({ user }) => {
                     value={updatedUser.phone}
                     onChange={handleChange}
                     required
-                  />
+                    />
                 </div>
                 <div className="form-group">
                   <label htmlFor="website">Website</label>
@@ -162,7 +165,7 @@ const SingleUser = ({ user }) => {
                     value={updatedUser.website}
                     onChange={handleChange}
                     required
-                  />
+                    />
                 </div>
               </div>
 
@@ -171,14 +174,14 @@ const SingleUser = ({ user }) => {
                   type="button"
                   className="btn btn-secondary"
                   onClick={handleCloseModal}
-                >
+                  >
                   Close
                 </button>
                 <button
                   type="button"
                   className="btn btn-primary"
                   onClick={handleSubmit}
-                >
+                  >
                   Ok
                 </button>
               </div>
@@ -186,6 +189,7 @@ const SingleUser = ({ user }) => {
           </div>
         </div>
       )}
+  {/* Modal Code */}
     </div>
   );
 };

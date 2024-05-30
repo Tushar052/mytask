@@ -4,7 +4,7 @@ import usersReducer from '../Features/Users/usersSlice';
 
 const store = configureStore({
   reducer: {
-    users: usersReducer,
+    users: usersReducer,   // For storing users fetched
   },
 });
 
